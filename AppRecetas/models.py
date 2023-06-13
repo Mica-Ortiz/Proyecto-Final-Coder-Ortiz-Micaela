@@ -19,9 +19,15 @@ class Recetas(models.Model):
     pasos = models.CharField(max_length=100)
     tiempo_de_coccion = models.IntegerField()
 
+    def __str__(self):
+        return self.titulo
+
 
 class Categoría(models.Model):
     nombre = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.nombre
 
 class Comentarios(models.Model):
     contenido = models.CharField(max_length=200)
