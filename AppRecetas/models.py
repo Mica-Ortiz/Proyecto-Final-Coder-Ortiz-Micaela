@@ -15,8 +15,8 @@ class Usuario(models.Model):
 
 class Recetas(models.Model):
     titulo = models.CharField(max_length=40)
-    ingredientes = models.CharField(max_length=100)
-    pasos = models.CharField(max_length=100)
+    ingredientes = models.CharField(max_length=1000)
+    pasos = models.CharField(max_length=1000)
     tiempo_de_coccion = models.IntegerField()
 
     def __str__(self):

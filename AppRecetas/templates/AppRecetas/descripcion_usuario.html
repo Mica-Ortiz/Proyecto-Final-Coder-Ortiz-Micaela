@@ -1,0 +1,14 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+{% for user in usuario %}
+
+<p>Usuario: {{user.usuario}}</p>
+<p>Email: {{user.email}}</p>
+  
+{% endfor %}
+
+{% endblock main %}

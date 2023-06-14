@@ -1,0 +1,20 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block main %}
+<div> 
+    <h2>Agregue su receta a la página!</h2>
+    <p>Complete los siguientes campos:</p>
+    <form action="" method="POST">{% csrf_token%}
+        <table>
+            {{miFormulario.as_table}}
+        </table>
+        <br> 
+        <input type= "submit", value="Enviar">      
+       
+    </form>
+</div>  
+<br>
+    
+{% endblock main %}

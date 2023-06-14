@@ -1,0 +1,14 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block main %}
+<form action="" method="POST">{% csrf_token%}
+    <table>
+        {{miFormulario.as_table}}
+    </table> 
+    <br>
+    <input type= "submit", value="Buscar">           
+</form>
+<br>
+{% endblock main %}    

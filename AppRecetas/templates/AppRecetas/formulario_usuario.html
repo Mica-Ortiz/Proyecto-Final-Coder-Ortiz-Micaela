@@ -1,0 +1,20 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block main %}
+<div> 
+    <h3>Registre un nuevo usuario</h3>
+    <p>Complete los siguientes campos:</p>
+    <form action="" method="POST">{% csrf_token%}
+        <table>
+            {{miFormulario.as_table}}
+        </table>
+        <br> 
+        <input type= "submit", value="Enviar">      
+       
+    </form>
+</div>  
+<br>
+    
+{% endblock main %}
