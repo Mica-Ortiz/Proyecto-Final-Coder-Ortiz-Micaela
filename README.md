@@ -12,8 +12,11 @@ Clases (por el momento):
  - Comentarios
 
 Se crearon las vistas: index, recetas, categorias, comentarios.
+
 Se creó el archivo base.html. El archivo index.html hereda de él. 
+
 Las otras vistas no se terminaron. La idea es que también herenden del base.html.
+
 Por el momento se puede navegar entre los templates: index.html y recetas.html con los botones Inicio y Recetas en la parte superior derecha de la página.
 
 Se crearon formularios para las clases: Recetas, Categorías, Usuario.
