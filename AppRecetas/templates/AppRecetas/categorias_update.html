@@ -4,14 +4,14 @@
 
 {% block main %}
 <div> 
-    <h3>Registre un nuevo usuario</h3>
-    <p>Complete los siguientes campos:</p>
+    <h2>Modificar categoría</h2>
+    <p>Edite los campos deseados:</p>
     <form action="" method="POST">{% csrf_token%}
         <table>
-            {{miFormulario.as_table}}
+            {{form.as_p}}
         </table>
         <br> 
-        <input type= "submit", value="Enviar">      
+        <input type= "submit", value="Actualizar">      
        
     </form>
 </div>  

@@ -1,0 +1,14 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block title %} Eliminar perfil {% endblock title %}
+
+{% block main %}
+        <form method="POST">{%csrf_token%}
+        ¿Estás seguro que deseas eliminar el perfil "{{object}}" ?
+        <input type = "submit" value = "Sí"/>
+        </form>
+
+        
+{% endblock main %}

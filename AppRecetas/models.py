@@ -16,7 +16,7 @@ class Recetas(models.Model):
     tiempo_de_coccion = models.IntegerField()
     fecha_hora_de_subida = models.DateTimeField(default=datetime.datetime.now)
     categoria = models.ManyToManyField(Categoría)
-    imagen = models.ImageField(upload_to ='imagenes', null=True, blank=True)
+    imagen = models.ImageField(upload_to ='imagenes', null=True, blank=True, default='imagenes/default.jpg')
 
     def __str__(self):
         return self.titulo

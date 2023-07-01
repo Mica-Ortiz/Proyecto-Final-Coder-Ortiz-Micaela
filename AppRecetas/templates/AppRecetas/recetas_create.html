@@ -4,11 +4,12 @@
 
 {% block main %}
 <div> 
-    <h2>Agregue su receta a la página!</h2>
-    <p>Complete los siguientes campos:</p>
+    <h3>Agregue su receta a la página!</h3>
+    <h5 class="underline-title">Complete los siguientes campos:</h5>
+    <br>
     <form action="" method="POST">{% csrf_token%}
         <table>
-            {{miFormulario.as_table}}
+            {{form.as_p}}
         </table>
         <br> 
         <input type= "submit", value="Enviar">      

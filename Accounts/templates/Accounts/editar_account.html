@@ -1,0 +1,15 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block title %} Editar perfil {% endblock title %}
+
+{% block main %}
+        <form method="POST" enctype="multipart/form-data"> 
+        {%csrf_token%}
+        {{formulario.as_p}}
+        <input type = "submit" value = "Editar"/>
+        </form>
+
+        
+{% endblock main %}

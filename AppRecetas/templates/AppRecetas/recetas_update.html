@@ -1,0 +1,20 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block main %}
+<div> 
+    <h2>Modificar receta</h2>
+    <p>Edite los campos deseados:</p>
+    <form action="" method="POST" class ="mb-2"enctype = "multipart/form-data">{% csrf_token%}
+        <table>
+            {{form.as_p}}
+        </table>
+        <br> 
+        <input type= "submit", value="Actualizar">      
+       
+    </form>
+</div>  
+<br>
+    
+{% endblock main %}

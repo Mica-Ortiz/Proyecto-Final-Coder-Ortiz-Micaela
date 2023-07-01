@@ -1,7 +1,7 @@
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Recetas
+from .models import Recetas, Categoría
 from django.core.paginator import Paginator
 
 ##ver/listar las recetas
@@ -32,19 +32,51 @@ class RecetaDetailView (DetailView):
 ##crear recetas
 class RecetaCreateView (CreateView):
     model = Recetas
-    success_url = "/AppRecetas/curso-list" #cuando se cree el modelo se dirige acá
-    fields = ["nombre","camada"]
-    template_name = "AppRecetas/cursos_create.html"  #llama al html para agregar un nuevo curso
+    success_url = "/AppRecetas/recetas-list" #cuando se cree el modelo se dirige acá
+    fields = ["titulo","subtitulo","ingredientes","pasos","tiempo_de_coccion","categoria","imagen"]
+    template_name = "AppRecetas/recetas_create.html"  #llama al html para agregar una nueva receta
 
 ##actualizar recetas
 class RecetaUpdateView (UpdateView):
     model = Recetas
-    success_url = "/AppUNR/curso-list" #cuando se actualice el modelo se dirige acá
-    fields = ["nombre"]
-    template_name = "AppUNR/cursos_form.html" ##asi se llama el html al que quiero ir
+    success_url = "/AppRecetas/recetas-list" #cuando se actualice el modelo se dirige acá
+    fields = ["titulo","subtitulo","ingredientes","pasos","tiempo_de_coccion","categoria","imagen"]
+    template_name = "AppRecetas/recetas_update.html" ##asi se llama el html al que quiero ir
+    context_object_name = 'receta'
 
 ##eliminar recetas
 class RecetaDeleteView (DeleteView):
     model = Recetas
-    success_url = "/AppUNR/curso-list" #cuando se elimine el modelo se dirige acá
-    template_name = "AppUNR/cursos_confirm_delete.html" ##asi se llama el html al que quiero ir
+    success_url = "/AppRecetas/recetas-list" #cuando se elimine el modelo se dirige acá
+    template_name = "AppRecetas/recetas_confirm_delete.html" ##asi se llama el html al que quiero ir
+    context_object_name = 'receta'
+
+
+##ver/listar las categorías
+class CategoriaListView (ListView):
+    model = Categoría
+    template_name = "AppRecetas/categorias_list.html"
+
+
+##crear categorías
+class CategoriaCreateView (CreateView):
+    model = Categoría
+    success_url = "/AppRecetas/categorias-list" #cuando se cree la categoría se dirige acá
+    fields = ["nombre","descripcion"]
+    template_name = "AppRecetas/categorias_create.html"  #llama al html para agregar una nueva categoría
+
+
+##actualizar categorías
+class CategoriaUpdateView (UpdateView):
+    model = Categoría
+    success_url = "/AppRecetas/categorias-list" #cuando se actualice el modelo se dirige acá
+    fields = ["nombre","descripcion"]
+    template_name = "AppRecetas/categorias_update.html" ##asi se llama el html al que quiero ir
+
+
+##eliminar categorías
+class CategoriaDeleteView (DeleteView):
+    model = Categoría
+    success_url = "/AppRecetas/categorias-list" #cuando se elimine el modelo se dirige acá
+    template_name = "AppRecetas/categorias_confirm_delete.html" ##asi se llama el html al que quiero ir
+    

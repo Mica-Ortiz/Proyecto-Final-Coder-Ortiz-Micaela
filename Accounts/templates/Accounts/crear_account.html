@@ -1,0 +1,15 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block title %} Crear perfil {% endblock title %}
+
+{% block main %}
+        <form method="POST"> 
+        {%csrf_token%}
+        {{formulario.as_p}}
+        <input type = "submit" value = "Registrar"/>
+        </form>
+
+        
+{% endblock main %}

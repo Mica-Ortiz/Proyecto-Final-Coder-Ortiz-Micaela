@@ -3151,6 +3151,10 @@ textarea.form-control-lg {
   --bs-btn-border-radius: 0.25rem;
 }
 
+.btn-space {
+  margin-right: 10px;
+}
+
 .fade {
   transition: opacity 0.15s linear;
 }
@@ -6809,6 +6813,10 @@ textarea.form-control-lg {
   position: sticky;
   bottom: 0;
   z-index: 1020;
+}
+
+.underline-title {
+  text-decoration: underline;
 }
 
 @media (min-width: 576px) {

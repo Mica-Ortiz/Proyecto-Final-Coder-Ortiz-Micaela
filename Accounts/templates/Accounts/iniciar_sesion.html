@@ -1,0 +1,22 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block title %} Iniciar sesión {% endblock title %}
+
+{% block main %}
+
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+        {%csrf_token%}
+        {{formulario.as_p}}
+        <input type = "submit" value = "Iniciar sesión"/>
+        </form>
+
+        
+{% endblock main %}
