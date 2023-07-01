@@ -1,0 +1,41 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <ul> {%for receta in page_obj%}
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <a href="#!"><img class="card-img-top" src="{{receta.imagen.url}}" alt="..." style="width: 100%; height: auto;"/></a>
+                    <div class="card-body">
+                        <div class="small text-muted">{{fecha_hora_de_subida}}</div>
+                        <h2 class="card-title h4">{{receta.titulo}}</h2>
+                        <p class="card-text">{{receta.subtitulo}}</p>
+                        <a class="btn btn-primary" href="{%url 'Detalle' receta.id%}">Leer más →</a>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </ul>
+    </div>
+</div>
+<!-- Paginación -->
+<div class="pagination d-flex justify-content-center mt-4">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <li class="page-item active" aria-current="page"><a class="page-link" href="?page=1">Primera</a></li>
+            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <li class="page-item active" aria-current="page"><a class="page-link" href="#!">{{ page_obj.number }}</a></li>
+        
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock main %}

@@ -1,9 +1,8 @@
 from django.urls import path
-from AppRecetas import views
+from AppRecetas import views, class_views
 
 urlpatterns = [
     path('', views.inicio, name="Inicio"),
-    path('recetas/', views.recetas, name="Recetas"),
     path('categorias/', views.categorias, name="Categorías"),
     path('comentarios/', views.comentarios, name="Comentarios"),
     path('formulario_receta/',views.RecetaFormulario, name="Formulario-Receta"),
@@ -12,4 +11,9 @@ urlpatterns = [
     path('busqueda_receta/',views.BusquedaReceta, name="Formulario-Buscar-Receta"),
     path('busqueda_categoria/',views.BusquedaCategoria, name="Formulario-Buscar-Categoria"),
     path('busqueda_usuario/',views.BusquedaUsuario, name="Formulario-Buscar-Usuario")
+]
+
+urlpatterns += [
+    path('recetas-list/', class_views.RecetaListView.as_view(), name="Recetas"),
+    path('recetas-detalle/<pk>/', class_views.RecetaDetailView.as_view(), name="Detalle"),
 ]

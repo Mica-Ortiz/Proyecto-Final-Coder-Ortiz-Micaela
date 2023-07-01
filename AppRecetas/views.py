@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from AppRecetas.forms import receta_formulario, categoria_formulario, usuario_formulario, busca_receta_form, busca_categoria_form, busca_usuario_form  
-from .models import Recetas, Categoría, Usuario
+from .models import Recetas, Categoría
 
 def inicio(request):
     return render(request, "AppRecetas/index.html")
 
 def recetas(request):
-    return render(request, "AppRecetas/recetas.html")
+    return render(request, "AppRecetas/recetas-list.html")
 
 def categorias(request):
     return render(request, "AppRecetas/categorias.html")

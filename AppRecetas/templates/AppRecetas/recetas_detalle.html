@@ -1,0 +1,14 @@
+{% extends 'AppRecetas/base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+    <p>Título: {{receta.titulo}}</p>
+    <p>Ingredientes: {{receta.ingredientes}}</p>
+    <p>Pasos: {{receta.pasos}}</p>
+    <p>Tiempo de cocción: {{receta.tiempo_de_coccion}}'</p>    
+    <p> <a href="{%url 'Recetas'%}">Regresar</a></p>
+
+
+{% endblock main %}
