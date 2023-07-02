@@ -10,6 +10,7 @@
         <br>
         <br>
         <p style="font-size: 12px;">Subido el: {{receta.fecha_hora_de_subida}}</p>
+        <p style="font-size: 12px;">Autor: {{receta.autor}}</p>
         <p>Categoría/s: 
             {% for categoria in receta.categoria.all %}
             {{categoria.nombre}},

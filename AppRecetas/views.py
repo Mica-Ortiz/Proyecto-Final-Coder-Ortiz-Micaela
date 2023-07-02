@@ -34,7 +34,7 @@ def BusquedaCategoria(request):
                try:
                     categoria = Categoría.objects.get(nombre= info["nombre"])
                     recetas = categoria.recetas.all()
-                    return render(request, "AppRecetas/descripcion_categoria.html", {"categoria": categoria, "recetas":recetas})
+                    return render(request, "AppRecetas/listado_categoria.html", {"categoria": categoria, "recetas":recetas})
                except Categoría.DoesNotExist:
                     messages.error(request, 'No se encontraron resultados')
                     return redirect ('Formulario-Buscar-Categoria')

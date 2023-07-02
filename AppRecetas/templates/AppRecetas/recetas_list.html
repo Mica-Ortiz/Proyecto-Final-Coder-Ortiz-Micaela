@@ -10,7 +10,9 @@
             <div class="card mb-4">
                 <a href="#!"><img class="card-img-top" src="{{receta.imagen.url}}" alt="..." style: width="300"; height="300";/></a>
                 <div class="card-body">
-                    <div class="small text-muted">{{receta.fecha_hora_de_subida}}</div>
+                    <div class="small text-muted">{{receta.fecha_hora_de_subida}}
+                        <p class="card-text">Autor: {{receta.autor}}</p>
+                    </div>
                     <h2 class="card-title h4">{{receta.titulo}}</h2>
                     <p class="card-text">{{receta.subtitulo}}</p>
                     <a class="btn btn-primary" href="{% url 'Detalle' receta.id %}">Leer más →</a>

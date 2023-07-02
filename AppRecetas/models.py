@@ -1,5 +1,7 @@
 from django.db import models
 import datetime
+from django.contrib.auth.models import User
+
 
 class Categoría(models.Model):
     nombre = models.CharField(max_length=20)
@@ -17,6 +19,7 @@ class Recetas(models.Model):
     fecha_hora_de_subida = models.DateTimeField(default=datetime.datetime.now)
     categoria = models.ManyToManyField(Categoría, related_name='recetas')
     imagen = models.ImageField(upload_to ='imagenes', null=True, blank=True, default='imagenes/default.jpg')
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titulo

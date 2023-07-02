@@ -3,7 +3,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recetas, Categoría
 from django.core.paginator import Paginator
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
 
 ##ver/listar las recetas
@@ -32,12 +32,15 @@ class RecetaDetailView (DetailView):
     context_object_name = 'receta'
 
 ##crear recetas
-class RecetaCreateView (CreateView):
+class RecetaCreateView (LoginRequiredMixin, CreateView):
     model = Recetas
     success_url = "/AppRecetas/recetas-list" #cuando se cree el modelo se dirige acá
     fields = ["titulo","subtitulo","ingredientes","pasos","tiempo_de_coccion","categoria","imagen"]
     template_name = "AppRecetas/recetas_create.html"  #llama al html para agregar una nueva receta
 
+    def form_valid(self, form):
+            form.instance.autor = self.request.user  
+            return super().form_valid(form)
 ##actualizar recetas
 class RecetaUpdateView (UpdateView):
     model = Recetas
