@@ -7,7 +7,8 @@
 {% block main %}
         <form method="POST">{%csrf_token%}
         ¿Estás seguro que deseas eliminar la categoría "{{object}}" ?
-        <input type = "submit" value = "Sí"/>
+        <input type = "submit" value = "Sí" class="btn btn-danger btn-sm btn-space"/>
+        <a href="{% url 'Categorias' %}"><button class="btn btn-primary m-2" type="button">Cancelar</button></a>
         </form>
 
         

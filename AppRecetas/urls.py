@@ -6,7 +6,7 @@ from AppRecetas import views, class_views
 urlpatterns = [
     path('', views.Inicio, name="Inicio"),
     path('busqueda-receta/',views.BusquedaReceta, name="Formulario-Buscar-Receta"),
-    #path('busqueda_categoria/',views.BusquedaCategoria, name="Formulario-Buscar-Categoria"),
+    path('busqueda_categoria/',views.BusquedaCategoria, name="Formulario-Buscar-Categoria"),
     path('acerca-de-mi/',views.AcercaDeMi, name="AcercaDeMi"),
 ]
 

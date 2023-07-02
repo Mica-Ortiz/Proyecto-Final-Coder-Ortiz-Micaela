@@ -33,6 +33,7 @@
                               <li><a class="dropdown-item" href="{% url 'Recetas' %}">Ver Recetas</a></li>
                               <li><a class="dropdown-item" href="{% url 'Crear' %}">Añadir receta</a></li>
                               <li><a class="dropdown-item" href="{% url 'Formulario-Buscar-Receta'%}">Buscar receta</a></li>
+                              <li><a class="dropdown-item" href="{% url 'Formulario-Buscar-Categoria'%}">Buscar recetas por Cat.</a></li>
                             </ul>
                           </div>
                         {% if request.user.is_superuser %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from AppRecetas.forms import busca_receta_form#, busca_categoria_form
-from .models import Recetas#, Categoría
+from AppRecetas.forms import busca_receta_form, busca_categoria_form
+from .models import Recetas, Categoría
 
 ##revisar
 
@@ -16,20 +16,20 @@ def BusquedaReceta(request):
           if busca_receta.is_valid():
                info = busca_receta.cleaned_data
                receta = Recetas.objects.filter(titulo= info["titulo"])
-               return render(request, "AppRecetas/recetas_detalle.html", {"receta": receta})
+               return render(request, "AppRecetas/recetas_detalle_buscar.html", {"receta": receta})
      else: 
           busca_receta = busca_receta_form()
           return render(request, "AppRecetas/busqueda_receta.html", {"miFormulario": busca_receta})
-     '''
+     
 def BusquedaCategoria(request):
      if request.method == "POST":
           busca_categoria= busca_categoria_form(request.POST)
           if busca_categoria.is_valid():
                info = busca_categoria.cleaned_data
-               categoria = Categoría.objects.filter(nombre= info["nombre"])
-               return render(request, "AppRecetas/descripcion_categoria.html", {"categoria": categoria})
+               categoria = Categoría.objects.get(nombre= info["nombre"])
+               recetas = categoria.recetas.all()
+               return render(request, "AppRecetas/descripcion_categoria.html", {"categoria": categoria, "recetas":recetas})
      else: 
           busca_categoria = busca_categoria_form()
           return render(request, "AppRecetas/busqueda_categoria.html", {"miFormulario": busca_categoria})
      
-'''

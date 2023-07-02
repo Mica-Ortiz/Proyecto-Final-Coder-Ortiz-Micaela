@@ -15,7 +15,7 @@ class Recetas(models.Model):
     pasos = models.CharField(max_length=1000)
     tiempo_de_coccion = models.IntegerField()
     fecha_hora_de_subida = models.DateTimeField(default=datetime.datetime.now)
-    categoria = models.ManyToManyField(Categoría)
+    categoria = models.ManyToManyField(Categoría, related_name='recetas')
     imagen = models.ImageField(upload_to ='imagenes', null=True, blank=True, default='imagenes/default.jpg')
 
     def __str__(self):
