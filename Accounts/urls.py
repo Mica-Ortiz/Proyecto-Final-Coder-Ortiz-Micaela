@@ -10,4 +10,5 @@ urlpatterns = [
     path('editarPerfil/', views.editar_perfil, name= 'EditarPefil'),
     path('mostrarPerfil/', views.mostrar_perfil, name='MostrarPerfil'),
     path('eliminarPerfil/<pk>/', views.EliminarPerfil.as_view(), name='EliminarPerfil'),
+    path('busquedaUsuario/',views.buscar_usuario, name="Formulario-Buscar-Usuario"),
 ]

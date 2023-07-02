@@ -55,6 +55,9 @@
                               <li><a class="dropdown-item" href="{% url 'MostrarPerfil' %}">Ver perfil</a></li>
                               <li><a class="dropdown-item" href="{% url 'EditarPefil' %}">Editar perfil</a></li>
                               <li><a class="dropdown-item" href="{% url 'EliminarPerfil' request.user.id %}">Eliminar perfil</a></li>
+                              {% if request.user.is_superuser %}
+                              <li><a class="dropdown-item" href="{% url 'Formulario-Buscar-Usuario'%}">Buscar perfil</a></li>
+                              {%endif%}
                               <li><a class="dropdown-item" href="{% url 'Logout' %}">Cerrar sesión</a></li>
                             </ul>
                           </div>

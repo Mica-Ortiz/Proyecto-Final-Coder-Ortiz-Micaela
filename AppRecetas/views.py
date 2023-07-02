@@ -3,7 +3,7 @@ from AppRecetas.forms import busca_receta_form, busca_categoria_form
 from .models import Recetas, Categoría
 from django.contrib import messages
 
-##revisar
+
 
 def Inicio(request):
     return render(request, "AppRecetas/index.html")

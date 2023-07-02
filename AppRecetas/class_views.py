@@ -3,7 +3,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recetas, Categoría
 from django.core.paginator import Paginator
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 ##ver/listar las recetas
@@ -41,7 +41,8 @@ class RecetaCreateView (LoginRequiredMixin, CreateView):
     def form_valid(self, form):
             form.instance.autor = self.request.user  
             return super().form_valid(form)
-##actualizar recetas
+    
+##actualizar recetas (sólo el usuario que la creó)
 class RecetaUpdateView (UpdateView):
     model = Recetas
     success_url = "/AppRecetas/recetas-list" #cuando se actualice el modelo se dirige acá
@@ -49,26 +50,22 @@ class RecetaUpdateView (UpdateView):
     template_name = "AppRecetas/recetas_update.html" ##asi se llama el html al que quiero ir
     context_object_name = 'receta'
 
-##eliminar recetas
+##eliminar recetas (sólo el usuario que la creó)
 
-class SuperuserOnlyMixin(UserPassesTestMixin):
-    def test_func(self):
-        return self.request.user.is_superuser
-    
-class RecetaDeleteView (SuperuserOnlyMixin,DeleteView):
+class RecetaDeleteView (DeleteView):
     model = Recetas
     success_url = "/AppRecetas/recetas-list" #cuando se elimine el modelo se dirige acá
     template_name = "AppRecetas/recetas_confirm_delete.html" ##asi se llama el html al que quiero ir
     context_object_name = 'receta'
 
 
-##ver/listar las categorías
+##ver/listar las categorías(sólo superusuarios)
 class CategoriaListView (ListView):
     model = Categoría
     template_name = "AppRecetas/categorias_list.html"
 
 
-##crear categorías
+##crear categorías(sólo superusuarios)
 class CategoriaCreateView (CreateView):
     model = Categoría
     success_url = "/AppRecetas/categorias-list" #cuando se cree la categoría se dirige acá
@@ -76,7 +73,7 @@ class CategoriaCreateView (CreateView):
     template_name = "AppRecetas/categorias_create.html"  #llama al html para agregar una nueva categoría
 
 
-##actualizar categorías
+##actualizar categorías(sólo superusuarios)
 class CategoriaUpdateView (UpdateView):
     model = Categoría
     success_url = "/AppRecetas/categorias-list" #cuando se actualice el modelo se dirige acá
@@ -84,7 +81,7 @@ class CategoriaUpdateView (UpdateView):
     template_name = "AppRecetas/categorias_update.html" ##asi se llama el html al que quiero ir
 
 
-##eliminar categorías
+##eliminar categorías(sólo superusuarios)
 class CategoriaDeleteView (DeleteView):
     model = Categoría
     success_url = "/AppRecetas/categorias-list" #cuando se elimine el modelo se dirige acá

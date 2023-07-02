@@ -23,3 +23,6 @@ class EditarUsuarioForm (forms.Form):
     first_name = forms.CharField(label="Nombre", max_length=30, required=False)
     last_name = forms.CharField(label="Apellido", max_length=30, required=False)
     avatar = forms.ImageField(required=False)
+
+class busca_usuario_form(forms.Form):
+    usuario = forms.CharField()

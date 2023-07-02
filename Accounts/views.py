@@ -27,7 +27,6 @@ from .models import Account
 from django.contrib import messages
 
 
-
 # Create your views here.
 
 def register(request):  
@@ -40,7 +39,6 @@ def register(request):
             return render (request, 'Accounts/crear_account.html', {'formulario': form})
     form= forms.RegistroUsuarioForm()  #lo creo vacio 
     return render (request, 'Accounts/crear_account.html', {'formulario': form})
-
 
 
 def login_request(request):
@@ -107,3 +105,22 @@ def cambiar_password(request):
 
 class Logout(LogoutView):
     template_name = 'Accounts/logout_account.html'
+
+def buscar_usuario(request):
+    if request.method == "POST":
+        busca_usuario= forms.busca_usuario_form(request.POST)
+        if busca_usuario.is_valid():
+            info = busca_usuario.cleaned_data
+            try:
+                usuario = User.objects.get(username= info["usuario"])
+                perfil,_ = Account.objects.get_or_create(user=usuario)
+                return render(request, "Accounts/mostrar_account.html", {"user": usuario, "perfil":perfil})
+            except User.DoesNotExist:
+                messages.error(request, 'No se encontró el usuario')
+                return redirect ('Formulario-Buscar-Usuario')
+        else:
+            messages.error(request, 'No se encontraron resultados')
+            return redirect ('Formulario-Buscar-Usuario')
+    else: 
+        busca_usuario= forms.busca_usuario_form()
+        return render(request, "Accounts/busqueda_usuario.html", {"miFormulario": busca_usuario})

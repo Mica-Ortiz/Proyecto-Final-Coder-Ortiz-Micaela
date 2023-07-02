@@ -23,8 +23,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="d-flex justify-content-start">
+                        {%if request.user == receta.autor%}
                         <a class="btn btn-primary btn-sm btn-space" href="{%url 'Update' receta.id%}">Editar</a></p>
                         <a class="btn btn-danger btn-sm btn-space" href="{%url 'Delete' receta.id%}">Eliminar</a></p>
+                        {%endif%}
                         <a class="btn btn-primary btn-sm " href="{%url 'Recetas'%}">Regresar</a></p>
                     </div>
                 </div>

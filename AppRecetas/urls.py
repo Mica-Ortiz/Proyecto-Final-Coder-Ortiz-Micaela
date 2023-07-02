@@ -19,5 +19,5 @@ urlpatterns += [
     path('categorias-crear/', class_views.CategoriaCreateView.as_view(), name="CrearC"),
     path('categorias-list/', class_views.CategoriaListView.as_view(), name="Categorias"),
     path('categorias-update/<pk>/', class_views.CategoriaUpdateView.as_view(), name="UpdateC"),
-     path('categorias-delete/<pk>/', class_views.CategoriaDeleteView.as_view(), name="DeleteC"),
+    path('categorias-delete/<pk>/', class_views.CategoriaDeleteView.as_view(), name="DeleteC"),
 ]
