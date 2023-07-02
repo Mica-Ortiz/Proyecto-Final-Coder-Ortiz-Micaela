@@ -53,15 +53,13 @@ def login_request(request):
                 return redirect ('Inicio') ##cuando inicia sesion va a la pagina inicial
             else:
                 messages.error(request, 'Datos incorrectos')
-                #return render (request, 'Accounts/iniciar_sesion.html', {'mensaje': 'datos incorrectos'})
         else:
             messages.error(request, 'Error al iniciar sesión')
-            ##return render(request, 'Accounts/iniciar_sesion.html', {"mensaje":"Error al iniciar sesión"})
     form= AuthenticationForm()  #lo creo vacio 
     return render (request, 'Accounts/iniciar_sesion.html', {'formulario': form})
 
 
-##@login_required
+@login_required
 def editar_perfil(request):
     usuario = request.user
     modelo_perfil, _= models.Account.objects.get_or_create(user=usuario) ##VER BIEN
@@ -96,17 +94,14 @@ def editar_perfil(request):
 
 def mostrar_perfil(request):
     usuario = request.user
-    perfil,_ = models.Account.objects.get_or_create(user=usuario)
+    perfil,_ = Account.objects.get_or_create(user=usuario)
     return render(request, "Accounts/mostrar_account.html", {"user": usuario, "perfil":perfil})
 
-#class MostrarPerfilDetailView (DetailView):
- #   model = Account
-  #  template_name = "Accounts/mostrar_account.html"
-    
-##en el html request se utiliza para acceder a la información del usuario autenticado.
-
 def eliminar_perfil(request):
-    pass
+    usuario = request.user
+    usuario.delete()
+    return render(request, "AppRecetas/index.html")
+
 
 def cambiar_password(request):
     pass
