@@ -8,7 +8,7 @@
     <p>Edite los campos deseados:</p>
     <form action="" method="POST" class ="mb-2"enctype = "multipart/form-data">{% csrf_token%}
         <table>
-            {{form.as_p}}
+            {{form.as_table}}
         </table>
         <br> 
         <input type= "submit", value="Actualizar">      

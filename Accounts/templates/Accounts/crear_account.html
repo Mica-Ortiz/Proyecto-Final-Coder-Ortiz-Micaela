@@ -7,9 +7,14 @@
 {% block main %}
         <form method="POST" enctype="multipart/form-data"> 
         {%csrf_token%}
-        {{formulario.as_p}}
+        <table>
+        {{formulario.as_table}}
+        </table>
+        <br>
         <input type = "submit" value = "Registrar"/>
         </form>
+        <br>
+        <br>
 
         
 {% endblock main %}

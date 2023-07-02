@@ -7,7 +7,7 @@
     <h2>Inserte una nueva categoría</h2>
     <form action="" method="POST">{% csrf_token%}
         <table>
-            {{form.as_p}}
+            {{form.as_table}}
         </table>
         <br> 
         <input type= "submit", value="Enviar">      
