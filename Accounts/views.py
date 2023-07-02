@@ -8,13 +8,15 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from django.contrib.auth.models import User
-
 from django.contrib.auth.views import PasswordChangeView, LogoutView
 
-from django.views.generic import DeleteView, DetailView
+from django.views.generic import DeleteView
+
+from django.contrib.auth.models import User
 
 from django.shortcuts import render, redirect
+
+from django.urls import reverse_lazy
 
 from Accounts import forms
 
@@ -28,7 +30,7 @@ from django.contrib import messages
 
 # Create your views here.
 
-def register(request):  ##comparar con diapos
+def register(request):  
     if request.method == 'POST':
         form= forms.RegistroUsuarioForm(data=request.POST)
         if form.is_valid():
@@ -77,9 +79,7 @@ def editar_perfil(request):
             usuario.save()
             modelo_perfil.save()
 
-            url = Account.objects.filter(user=request.user.id)[0].avatar.url
-
-            return render(request, "Accounts/mostrar_account.html", {"formulario": form , "usuario": usuario, "url" : url})
+            return render(request, "Accounts/mostrar_account.html", {"formulario": form , "usuario": usuario, "perfil":modelo_perfil})
         else:
             return render(request, "Accounts/editar_account.html", {"formulario": form , "usuario": usuario})
     form = forms.EditarUsuarioForm(
@@ -97,11 +97,10 @@ def mostrar_perfil(request):
     perfil,_ = Account.objects.get_or_create(user=usuario)
     return render(request, "Accounts/mostrar_account.html", {"user": usuario, "perfil":perfil})
 
-def eliminar_perfil(request):
-    usuario = request.user
-    usuario.delete()
-    return render(request, "AppRecetas/index.html")
-
+class EliminarPerfil(LoginRequiredMixin, DeleteView):
+    model = User
+    success_url = reverse_lazy("Inicio")
+    template_name = 'Accounts/eliminar_account.html'
 
 def cambiar_password(request):
     pass

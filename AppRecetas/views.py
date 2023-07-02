@@ -4,8 +4,11 @@ from .models import Recetas#, Categoría
 
 ##revisar
 
-def inicio(request):
+def Inicio(request):
     return render(request, "AppRecetas/index.html")
+
+def AcercaDeMi(request):
+     return render(request, "AppRecetas/acerca_de_mi.html")
 
 def BusquedaReceta(request):
      if request.method == "POST":
@@ -16,7 +19,7 @@ def BusquedaReceta(request):
                return render(request, "AppRecetas/recetas_detalle.html", {"receta": receta})
      else: 
           busca_receta = busca_receta_form()
-          return render(request, "AppRecetas/busqueda_receta.html", {"miFormulario": busca_receta})
+          return render(request, "AppRecetas/recetas_list.html", {"miFormulario": busca_receta})
      '''
 def BusquedaCategoria(request):
      if request.method == "POST":

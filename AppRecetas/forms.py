@@ -5,6 +5,3 @@ class busca_receta_form(forms.Form):
 
 class busca_categoria_form(forms.Form):
     nombre = forms.CharField()
-
-class busca_usuario_form(forms.Form):
-    usuario = forms.CharField()

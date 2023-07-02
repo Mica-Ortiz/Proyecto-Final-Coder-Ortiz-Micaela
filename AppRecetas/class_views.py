@@ -3,6 +3,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recetas, Categoría
 from django.core.paginator import Paginator
+from django.contrib.auth.mixins import UserPassesTestMixin
+
 
 ##ver/listar las recetas
 ## ver si lo listo con un for 
@@ -45,7 +47,12 @@ class RecetaUpdateView (UpdateView):
     context_object_name = 'receta'
 
 ##eliminar recetas
-class RecetaDeleteView (DeleteView):
+
+class SuperuserOnlyMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser
+    
+class RecetaDeleteView (SuperuserOnlyMixin,DeleteView):
     model = Recetas
     success_url = "/AppRecetas/recetas-list" #cuando se elimine el modelo se dirige acá
     template_name = "AppRecetas/recetas_confirm_delete.html" ##asi se llama el html al que quiero ir
