@@ -61,7 +61,7 @@ def login_request(request):
     return render (request, 'Accounts/iniciar_sesion.html', {'formulario': form})
 
 
-##@login_required ## COMPARAR CON EL DEL PROFE
+##@login_required
 def editar_perfil(request):
     usuario = request.user
     modelo_perfil, _= models.Account.objects.get_or_create(user=usuario) ##VER BIEN
@@ -69,26 +69,21 @@ def editar_perfil(request):
         form = forms.EditarUsuarioForm(request.POST,request.FILES) ##request.files permite traer las imágenes
         if form.is_valid():
             data = form.cleaned_data
-            if data.get('email'):
-                usuario.email = data.get('email')
-            if data.get('password1'):
-                usuario.password1 = data.get('password1')
-            if data.get('password2'):
-                usuario.password1 = data.get('password2')
-            if data.get('last_name'):
-                usuario.last_name= data.get('last_name')
-            if data.get('first_name'):
-                usuario.first_name= data.get('first_name')
+            
+            usuario.email = data['email']
+            usuario.last_name = data['last_name']
+            usuario.first_name = data['first_name']
+
             modelo_perfil.avatar = data.get('avatar') if data.get('avatar') else modelo_perfil.avatar ##para cambiar el avatar, la variable no forma parte de user por eso llamo a Account
 
             usuario.save()
             modelo_perfil.save()
 
-            return redirect ('Inicio') ##cambiar a mostrar account
+            url = Account.objects.filter(user=request.user.id)[0].avatar.url
+
+            return render(request, "Accounts/mostrar_account.html", {"formulario": form , "usuario": usuario, "url" : url})
         else:
             return render(request, "Accounts/editar_account.html", {"formulario": form , "usuario": usuario})
-#form = forms.EditarUsuarioForm(initial={'email': usuario.email}) asi estaba en el ppt
-## Al entrar con el metodo get se crea una instancia del formulario donde se muestran los valores iniciales/existentes que se indican abajo
     form = forms.EditarUsuarioForm(
         initial= {
             'email': usuario.email,
@@ -99,11 +94,14 @@ def editar_perfil(request):
     )
     return render(request, "Accounts/editar_account.html", {"formulario": form , "usuario": usuario})
 
+def mostrar_perfil(request):
+    usuario = request.user
+    perfil,_ = models.Account.objects.get_or_create(user=usuario)
+    return render(request, "Accounts/mostrar_account.html", {"user": usuario, "perfil":perfil})
 
-
-class MostrarPerfilDetailView (DetailView):
-    model = Account
-    template_name = "Accounts/mostrar_account.html"
+#class MostrarPerfilDetailView (DetailView):
+ #   model = Account
+  #  template_name = "Accounts/mostrar_account.html"
     
 ##en el html request se utiliza para acceder a la información del usuario autenticado.
 

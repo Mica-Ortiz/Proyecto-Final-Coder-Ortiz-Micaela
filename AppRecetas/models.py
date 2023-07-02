@@ -10,7 +10,7 @@ class Categoría(models.Model):
 
 class Recetas(models.Model):
     titulo = models.CharField(max_length=40)
-    subtitulo = models.CharField(max_length=100, null= True, default="")
+    subtitulo = models.CharField(max_length=1000, null= True, default="")
     ingredientes = models.CharField(max_length=1000)
     pasos = models.CharField(max_length=1000)
     tiempo_de_coccion = models.IntegerField()

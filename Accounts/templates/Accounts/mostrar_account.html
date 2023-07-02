@@ -5,9 +5,14 @@
 {% block title %} Mostrar perfil {% endblock title %}
 
 {% block main %}
-        <p>Nombre: <i>{{request.user.first_name}}</i></p>
-        <p>Apellido: <i>{{request.user.last_name}}</i></p>
-        <p>Email: <i>{{request.user.email}}</i></p>
-        <p> <a href="{%url 'Inicio%}">Regresar</a></p>
+        
+        <p>Nombre: <i>{{user.first_name}}</i></p>
+        <p>Apellido: <i>{{user.last_name}}</i></p>
+        <p>Email: <i>{{user.email}}</i></p>
+        <p>Avatar:</p>
+        <a href="#!"><img class="card-img-top mx-auto" src="{{perfil.avatar.url}}" alt="..." style="width: 10%; height: auto;"/></a>
+        <br>
+        <br>
+        <p> <a href="{%url 'Inicio'%}">Regresar</a></p>
         
 {% endblock main %}

@@ -3,8 +3,12 @@
 {% load static %}
 
 {% block main %}
-
-    <p>Título: {{receta.titulo}}</p>
+    <h2 class="text-center">{{receta.titulo}}</h2>
+    <div class="text-center">
+    <a href="#!"><img class="card-img-top mx-auto" src="{{receta.imagen.url}}" alt="..." style="width: 50%; height: auto;"/></a>
+    </div>
+    <br>
+    <br>
     <p>Ingredientes: {{receta.ingredientes}}</p>
     <p>Pasos: {{receta.pasos}}</p>
     <p>Tiempo de cocción: {{receta.tiempo_de_coccion}}'</p> 
