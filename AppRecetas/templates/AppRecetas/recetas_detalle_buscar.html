@@ -7,10 +7,11 @@
 <a class="btn btn-primary" href="{%url 'Formulario-Buscar-Receta'%}">Regresar</a>
 <br>
 <br>
+<div class="row">
     {%for receta in receta.all%}
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="{{receta.imagen.url}}" alt="..." style="width: 100%; height: auto;"/></a>
+            <a href="#!"><img class="card-img-top" src="{{receta.imagen.url}}" alt="..." tyle: width="300"; height="300"/></a>
             <div class="card-body">
                 <div class="small text-muted">{{receta.fecha_hora_de_subida}}</div>
                 <h2 class="card-title h4">{{receta.titulo}}</h2>
@@ -20,4 +21,5 @@
         </div>
     </div>
     {%endfor%}
+</div>
 {% endblock main %}
