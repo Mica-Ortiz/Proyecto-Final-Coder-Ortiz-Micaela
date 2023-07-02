@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Account (models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
-    avatar = models.ImageField(upload_to ='avatares', null=True, blank=True)
+    avatar = models.ImageField(upload_to ='avatares', null=True, blank=True, default='avatares/default.png')
 
     def __str__(self):
         return f"{self.user} - {self.avatar}" ##ver si lo dejo asi

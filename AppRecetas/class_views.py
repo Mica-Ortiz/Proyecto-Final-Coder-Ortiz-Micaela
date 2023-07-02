@@ -10,7 +10,7 @@ from django.core.paginator import Paginator
 class RecetaListView (ListView):
     model = Recetas
     template_name = "AppRecetas/recetas_list.html"
-    paginate_by = 6  # 6 recetas por página
+    paginate_by = 4  # 4 recetas por página
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
