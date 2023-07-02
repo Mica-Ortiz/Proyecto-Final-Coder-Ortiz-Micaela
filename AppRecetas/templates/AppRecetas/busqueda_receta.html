@@ -3,6 +3,13 @@
 {% load static %}
 
 {% block main %}
+
+{% if messages %}
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+
 <form action="" method="POST">{% csrf_token%}
     <table>
         {{miFormulario.as_table}}

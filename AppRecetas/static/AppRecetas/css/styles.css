@@ -182,6 +182,17 @@ address {
   line-height: inherit;
 }
 
+.page-item {
+  display: inline-block;
+  /* Otros estilos específicos para los elementos de la paginación */
+}
+
+.d-inline {
+  display: inline;
+  /* Otros estilos específicos para elementos inline */
+}
+
+
 ol,
 ul {
   padding-left: 2rem;
@@ -10831,4 +10842,5 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+  
 }

@@ -16,8 +16,8 @@ class RecetaListView (ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        recetas_list = context['object_list']
-        paginator = Paginator(recetas_list, self.paginate_by)
+        queryset = self.get_queryset()
+        paginator = Paginator(queryset, self.paginate_by)
 
         page_number = self.request.GET.get('page')
         page_obj = paginator.get_page(page_number)

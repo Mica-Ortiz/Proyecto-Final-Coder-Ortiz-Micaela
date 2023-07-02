@@ -3,18 +3,25 @@
 {% load static %}
 
 {% block main %}
-
+<a class="btn btn-primary" href="{%url 'Formulario-Buscar-Categoria'%}">Regresar</a>
+<br>
+<br>
 <div class="card mb-4">
     <div class="card-body">{{ categoria.nombre }}: {{categoria.descripcion}}</div>
     <div class="row">
         <div class="col-md-12">
             {% for receta in recetas %}
-            <div class="d-flex justify-content-start">
-            <p class="mr-2">{{receta.titulo}}</p>
-                <a class="btn btn-primary btn-sm" href="{%url 'Detalle' receta.id%}">Ver</a>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <a href="#!"><img class="card-img-top" src="{{receta.imagen.url}}" alt="..." style="width: 100%; height: auto;"/></a>
+                    <div class="card-body">
+                        <div class="small text-muted">{{receta.fecha_hora_de_subida}}</div>
+                        <h2 class="card-title h4">{{receta.titulo}}</h2>
+                        <p class="card-text">{{receta.subtitulo}}</p>
+                        <a class="btn btn-primary" href="{%url 'Detalle' receta.id%}">Leer más →</a>
+                    </div>
+                </div>
             </div>
-            <br>
-            <br>
             {%endfor%}
         </div>
     </div>
