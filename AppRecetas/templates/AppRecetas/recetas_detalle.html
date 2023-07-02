@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block main %}
+    {% for receta in receta.all %}
         <h2 class="text-center">{{receta.titulo}}</h2>
         <div class="text-center">
         <a href="#!"><img class="card-img-top mx-auto" src="{{receta.imagen.url}}" alt="..." style="width: 50%; height: auto;"/></a>
@@ -29,5 +30,5 @@
                 </div>
             </div>
         <br>
-    
+    {% endfor %}
 {% endblock main %}

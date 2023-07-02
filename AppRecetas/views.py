@@ -15,11 +15,11 @@ def BusquedaReceta(request):
           busca_receta= busca_receta_form(request.POST)
           if busca_receta.is_valid():
                info = busca_receta.cleaned_data
-               receta = Recetas.objects.get(titulo= info["titulo"])
+               receta = Recetas.objects.filter(titulo= info["titulo"])
                return render(request, "AppRecetas/recetas_detalle.html", {"receta": receta})
      else: 
           busca_receta = busca_receta_form()
-          return render(request, "AppRecetas/recetas_list.html", {"miFormulario": busca_receta})
+          return render(request, "AppRecetas/busqueda_receta.html", {"miFormulario": busca_receta})
      '''
 def BusquedaCategoria(request):
      if request.method == "POST":
