@@ -34,7 +34,7 @@ class RecetaDetailView (DetailView):
 
 class RecetaCreateView (LoginRequiredMixin, CreateView):
     model = Recetas
-    success_url = "/AppRecetas/recetas-list" #cuando se cree el modelo se dirige acá
+    success_url = "/AppRecetas/" #cuando se cree el modelo se dirige acá
     fields = ["titulo","subtitulo","ingredientes","pasos","tiempo_de_coccion","categoria","imagen"]
     template_name = "AppRecetas/recetas_create.html"  #llama al html para agregar una nueva receta
     
@@ -46,7 +46,7 @@ class RecetaCreateView (LoginRequiredMixin, CreateView):
 ##actualizar recetas (sólo el usuario que la creó)
 class RecetaUpdateView (UpdateView):
     model = Recetas
-    success_url = "/AppRecetas/recetas-list" #cuando se actualice el modelo se dirige acá
+    success_url = "/AppRecetas/" #cuando se actualice el modelo se dirige acá
     fields = ["titulo","subtitulo","ingredientes","pasos","tiempo_de_coccion","categoria","imagen"]
     template_name = "AppRecetas/recetas_update.html" ##asi se llama el html al que quiero ir
     context_object_name = 'receta'
@@ -55,7 +55,7 @@ class RecetaUpdateView (UpdateView):
 
 class RecetaDeleteView (DeleteView):
     model = Recetas
-    success_url = "/AppRecetas/recetas-list" #cuando se elimine el modelo se dirige acá
+    success_url = "/AppRecetas/" #cuando se elimine el modelo se dirige acá
     template_name = "AppRecetas/recetas_confirm_delete.html" ##asi se llama el html al que quiero ir
     context_object_name = 'receta'
 
