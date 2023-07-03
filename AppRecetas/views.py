@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from AppRecetas.forms import busca_receta_form, busca_categoria_form
 from .models import Recetas, Categoría
 from django.contrib import messages
@@ -6,7 +6,10 @@ from django.contrib import messages
 
 
 def Inicio(request):
-    return render(request, "AppRecetas/index.html")
+    categorias = Categoría.objects.all()
+    recetas = Recetas.objects.all()
+    return render(request, "AppRecetas/index.html", {'categorias': categorias, "recetas": recetas})
+    
 
 def AcercaDeMi(request):
      return render(request, "AppRecetas/acerca_de_mi.html")
@@ -41,4 +44,8 @@ def BusquedaCategoria(request):
      else: 
           busca_categoria = busca_categoria_form()
           return render(request, "AppRecetas/busqueda_categoria.html", {"miFormulario": busca_categoria})
-     
+
+def RecetasPorCategoria(request, categoria_id):
+    categoria = get_object_or_404(Categoría, id=categoria_id)
+    recetas = Recetas.objects.filter(categoria=categoria)
+    return render(request, "AppRecetas/listado_categoria.html", {"categoria": categoria, "recetas":recetas})

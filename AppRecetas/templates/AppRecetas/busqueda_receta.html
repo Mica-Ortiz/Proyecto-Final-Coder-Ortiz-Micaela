@@ -10,6 +10,8 @@
         {% endfor %}
         {% endif %}
 
+<h4>Ingrese la receta que desea buscar</h4>
+<br>
 <form action="" method="POST">{% csrf_token%}
     <table>
         {{miFormulario.as_table}}

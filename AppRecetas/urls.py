@@ -8,6 +8,8 @@ urlpatterns = [
     path('busqueda-receta/',views.BusquedaReceta, name="Formulario-Buscar-Receta"),
     path('busqueda_categoria/',views.BusquedaCategoria, name="Formulario-Buscar-Categoria"),
     path('acerca-de-mi/',views.AcercaDeMi, name="AcercaDeMi"),
+    path('categoria/<int:categoria_id>/', views.RecetasPorCategoria, name='Recetas-Por-Categoria'),
+    
 ]
 
 urlpatterns += [
