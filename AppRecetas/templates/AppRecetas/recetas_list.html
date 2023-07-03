@@ -22,20 +22,21 @@
         {% endfor %}
     </div>
     <!-- Paginación -->
-    <div class="pagination d-flex justify-content-center mt-4">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <li class="page-item active d-inline" aria-current="page"><a class="page-link" href="?page=1">Primera</a></li>
-                <li class="page-item d-inline"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
-            {% endif %}
+<div class="pagination d-flex justify-content-center mt-4">
+    <span class="step-links d-flex">
 
-            <li class="page-item active d-inline" aria-current="page"><a class="page-link" href="#!">{{ page_obj.number }}</a></li>
-            
-            {% if page_obj.has_next %}
-                <li class="page-item active d-inline"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
-                <li class="page-item d-inline"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a></li>
-            {% endif %}
-        </span>
-    </div>
+        {% if page_obj.has_previous %}
+        <li class="page-item active d-inline" aria-current="page"><a class="page-link" href="?page=1">Primera</a></li>
+        <li class="page-item d-inline"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+        {% endif %}
+
+        <li class="page-item active d-inline" aria-current="page"><a class="page-link" href="#!">{{ page_obj.number }}</a></li>
+
+        {% if page_obj.has_next %}
+        <li class="page-item active d-inline"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+        <li class="page-item d-inline"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a></li>
+        {% endif %}
+    </span>
 </div>
+
 {% endblock main %}
