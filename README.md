@@ -1,36 +1,24 @@
-# “Tercera pre-entrega - Ortiz Micaela”
+# “Proyecto final - Ortiz Micaela”
 
 Página web de recetas de cocina. 
 
-Tiene pocas funcionalidades desarrolladas por el momento. La idea es que las personas puedan registrarse creando un usuario, subir
-recetas, comentarlas y buscar recetas.
+En esta página web las personas puedan registrarse creando un usuario, tendrán que registrar su username, email, nombre, apellido y un avatar (imagen) opcional. Sino se les agrega uno por defecto.
 
-Clases (por el momento):
- - Recetas
- - Categorías
- - Usuarios
- - Comentarios
+Podrán subir recetas, con un título, subtítulo, descripción de ingredientes, pasos a seguir y tiempo de cocción. El usuario podrá editar y/o eliminar sus propias recetas subidas por él. Tendrá acceso a las recetas de los demás usuarios pero sólo podrá leerlas.
+Siempre que se quiera eliminar una receta habrá un pedido de confirmación.
 
-Se crearon las vistas: index, recetas, categorias, comentarios.
+A su vez podrán buscar recetas, ya sea por su nombre o por categoría.
 
-Se creó el archivo base.html. El archivo index.html hereda de él. 
+En cuanto al perfil del usuario, el mismo puede verse, editarse y eliminarse por el propio usuario. Se le pedirá confirmación en el caso de querer eliminarlo.
 
-Las otras vistas no se terminaron. La idea es que también herenden del base.html.
-
-Por el momento se puede navegar entre los templates: index.html y recetas.html con los botones Inicio y Recetas en la parte superior derecha de la página.
-
-Se crearon formularios para las clases: Recetas, Categorías, Usuario.
-
-Para insertar datos en la BD mediante formularios hay que dirigirse a las siguientes urls:
-- 'servidor'/AppRecetas/formulario_receta
-- 'servidor'/AppRecetas/formulario_categoria
-- 'servidor'/AppRecetas/formulario_usuario
-
-Para buscar datos en la BD mediante formularios hay que dirigirse a las siguientes urls:
-- 'servidor'/AppRecetas/busqueda_receta
-- 'servidor'/AppRecetas/busqueda_categoria
-- 'servidor'/AppRecetas/busqueda_usuario
+El admin puede eliminar y editar cualquier receta. Lo mismo con los perfiles de los usuarios.
 
 Para ingresar al admin:
 - usser: Micaela
 - password: MIMOSHI345
+
+En la página inicial figuran algunas recetas, un botón al buscador de recetas y links de las distintas categorías existentes. 
+
+En el listado de recetas (Recetas- Ver Recetas) figuran todas las recetas. En ella se observan: una foto, título, breve descripción (subtítulo), autor (usuario que la añadió) y la fecha y la hora en que fue subida la receta. En todas hay un botón ‘Leer más’ para verlas en detalle. En la parte inferior hay una barra de navegación entre las distintas páginas que se van generando a medida que se añaden recetas.
+
+Hay una sección adicional “Acerca de mí” que me describe brevemente.
